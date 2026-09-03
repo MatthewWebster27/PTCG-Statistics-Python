@@ -1,4 +1,4 @@
-# PTCG-Statistics-Python-
+# PTCG-Statistics-Python
 This is a small piece of software which provides various basic statistics based on playing a deck in the PTCG (Pokemon Trading Card Game). Some features are:
 
 - Being able to import decks (in the Limitless formatting) and store them in a text file
