@@ -62,6 +62,27 @@ def isNameUnique(name):
 
     return True
 
+"""
+The function 'removeDecklist' will use the name (String) passed and find the corresponding
+decklist to remove, removing it from the text file.
+"""
+
+def removeDecklist(name):
+
+    newDecklistsData = "" # We aim to build up this string and overwrite the existing text file 
+
+    decklists = getDecklists()
+
+    for decklist in decklists:
+        # We skip the decklist if the name matches, hence removing the decklist
+        if decklist[0][6:] != name:
+            newDecklistsData += decklist[0] + "\n\n" + decklist[1] + "\n\n" + decklist[2] + "\n\n" + decklist[3] + "\n\n"
+
+    newDecklistsData = newDecklistsData.strip() # Remove trailing newlines
+
+    with open("decklists.txt","w") as decklistsFile:
+        decklistsFile.write(newDecklistsData)
+
 # MAIN CODE
 
 # Commented the display of decklists so it can be re-used later
@@ -79,4 +100,4 @@ for decklist in decklists:
     count += 1
 """
 
-addDecklist("shouldBeIgnored","Piper Lepine")
+removeDecklist("Piper Lepine")
