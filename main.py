@@ -39,10 +39,12 @@ appending it to the 'decklists.txt' text file.
 
 def addDecklist(newDecklist,name):
 
-    with open("decklists.txt", "a") as decklistsFile:
-        # By appending, the new decklist is written at the end of the text file
+    # We can only add the decklist if its name is unique, because it acts as the 'primary key'
 
-        decklistsFile.write("\n\nName: " + name + "\n\n" + newDecklist)
+    if isNameUnique(name):
+        with open("decklists.txt", "a") as decklistsFile:
+            # By appending, the new decklist is written at the end of the text file
+            decklistsFile.write("\n\nName: " + name + "\n\n" + newDecklist)
 
 """
 The helper function 'isNameUnique' goes through every decklist and determines if the given 
@@ -77,14 +79,4 @@ for decklist in decklists:
     count += 1
 """
 
-# Temporary name tests
-
-if isNameUnique("Tord"):
-    print("Tord is a unique name")
-else:
-    print("Tord is not a unique name")
-
-if isNameUnique("Piper Lepine"):
-    print("Piper Lepine is a unique name")
-else:
-    print("Piper Lepine is not a unique name")
+addDecklist("shouldBeIgnored","Piper Lepine")
