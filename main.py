@@ -40,12 +40,31 @@ appending it to the 'decklists.txt' text file.
 def addDecklist(newDecklist,name):
 
     with open("decklists.txt", "a") as decklistsFile:
-        # By appending, the new decklist is written at the end of the text  file
+        # By appending, the new decklist is written at the end of the text file
 
         decklistsFile.write("\n\nName: " + name + "\n\n" + newDecklist)
 
+"""
+The helper function 'isNameUnique' goes through every decklist and determines if the given 
+name (String) exists already in the text file.
+"""
+
+def isNameUnique(name):
+
+    decklists = getDecklists()
+
+    for decklist in decklists:
+        # We use string slicing to remove the "Name: " part of the data
+        if decklist[0][6:] == name:
+            return False
+
+    return True
+
 # MAIN CODE
 
+# Commented the display of decklists so it can be re-used later
+
+"""
 decklists = getDecklists()
 count = 1 # Indicates the ordering of the decklists, incremented after each pass
 
@@ -56,40 +75,16 @@ for decklist in decklists:
         print(section + "\n")
 
     count += 1
+"""
 
-piperList = """Pokémon: 19
-4 N's Zorua JTG 97
-4 N's Zoroark ex JTG 98
-2 N's Darumaka JTG 26
-2 N's Darmanitan JTG 27
-1 N's Zekrom ASC 155
-1 N's Reshiram JTG 116
-1 Budew ASC 16
-1 Munkidori TWM 95
-1 Yveltal MEG 88
-1 Fezandipiti ex ASC 142
-1 Pecharunt ex SFA 39
+# Temporary name tests
 
-Trainer: 33
-4 Lillie's Determination MEG 119
-3 Boss's Orders MEG 114
-3 Cyrano SSP 170
-1 Black Belt's Training JTG 143
-1 Janine's Secret Art PRE 112
-4 Buddy-Buddy Poffin TEF 144
-3 Poké Pad POR 81
-3 N's PP Up JTG 153
-2 Night Stretcher ASC 196
-1 Ultra Ball MEG 131
-1 Special Red Card CRI 82
-1 Pokégear 3.0 SVI 186
-1 Secret Box TWM 163
-1 Binding Mochi PRE 95
-1 Powerglass SFA 63
-2 N's Castle JTG 152
-1 Lumiose City POR 77
+if isNameUnique("Tord"):
+    print("Tord is a unique name")
+else:
+    print("Tord is not a unique name")
 
-Energy: 8
-8 Darkness Energy MEE 7"""
-
-addDecklist(piperList, "Piper Lepine")
+if isNameUnique("Piper Lepine"):
+    print("Piper Lepine is a unique name")
+else:
+    print("Piper Lepine is not a unique name")
