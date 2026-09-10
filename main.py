@@ -1,3 +1,8 @@
+# IMPORTS
+
+from card import Card
+from deck import Deck
+
 # FUNCTION DEFINITIONS
 
 """
